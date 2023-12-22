@@ -18,5 +18,12 @@ def open_more_options():
 myglob.more_but.addEventListener("click", open_more_options)
 #myglob.m_close.addEventListener("click", close_more_options)
 
+prev_doc_onclick = document.onclick
 
+def new_doc_onclick(event):
+    if not myglob.m_op_window.contains(event.target) and event.target!=myglob.more_but:
+        close_more_options()
+    if prev_doc_onclick:
+        prev_doc_onclick()
+document.onclick = new_doc_onclick
 
