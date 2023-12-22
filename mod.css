@@ -1,0 +1,98 @@
+.hidden {
+    display: none;
+}
+
+#mod-top-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: fixed;
+    width: 100vw;
+    height: 60px;
+    background-color: rgb(2, 1, 44);
+    z-index: 100;
+    box-shadow: 0px 1px 10px rgb(27, 27, 27);
+    justify-content: space-between;
+}
+
+#mod-menu-icon {
+    font-size: 34px;
+    padding: 0px 10px;
+}
+
+#mod-logo {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    align-items: center;
+    user-select: none;
+}
+
+#mod-app-name {
+    font-size: 6vmin;
+    font-family: 'Times New Roman', Times, serif;
+    padding-left: 3vmin;
+}
+
+#mod-app-developer {
+    background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+        radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+    font-size: 1.7vmin;
+    border-radius: 6px;
+    padding: 2px 4px;
+    color: rgb(41, 0, 14);
+    font-weight: bold;
+    font-family: monospace;
+    margin-top: -2vmin;
+}
+
+
+#mod-top-more{
+    font-size: 6vmin;
+    background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+        radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+    color: transparent;
+    -webkit-background-clip: text;
+    padding-right: 2.5vmin;
+}
+
+#mod-top-more:hover{
+    cursor: pointer;
+}
+
+#mod-top-options {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: white;
+    box-shadow: 0px 0px 10px black;
+}
+
+#mod-top-options span{
+    padding: 15px 30px;
+}
+
+#mod-top-options span:hover{
+    cursor: pointer;
+    background-color: rgb(181, 211, 221);
+}
+
+#mod-top-options #mod-op-close{
+    background-color: rgb(207, 0, 0);
+    color: white;
+}
+
+#mod-top-options .mod-op-close:hover{
+    background-color: rgb(128, 0, 0);
+}
+
+
+
+.golden-gradient-text {
+    background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+        radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+    color: transparent;
+    -webkit-background-clip: text;
+}

@@ -470,9 +470,9 @@ export default class Item {
 			node = node.parent as Item; // always item, cannot be Map (would be root)
 		}
 		switch (depth) {
-			case 0: return shapeRepo.get("ellipse")!;
+			case 0: return shapeRepo.get("box")!;
 			case 1: return shapeRepo.get("box")!;
-			default: return shapeRepo.get("underline")!;
+			default: return shapeRepo.get("box")!;
 		}
 	}
 

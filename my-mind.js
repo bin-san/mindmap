@@ -3493,11 +3493,11 @@ ${text}`);
       }
       switch (depth) {
         case 0:
-          return repo3.get("ellipse");
+          return repo3.get("box");
         case 1:
           return repo3.get("box");
         default:
-          return repo3.get("underline");
+          return repo3.get("box");
       }
     }
     get map() {
@@ -3688,7 +3688,7 @@ ${text}`);
       this.position = [0, 0];
       this.fontSize = 15;
       let resolvedOptions = Object.assign({
-        root: "My Mind Map",
+        root: "Title",
         layout: repo2.get("map")
       }, options);
       this.style.textContent = css;
@@ -4364,7 +4364,7 @@ ${text}`);
   new class Finish extends Command {
     constructor() {
       super("finish", "Finish editing");
-      this.keys = [{ code: "Enter", altKey: false, ctrlKey: false, shiftKey: false }];
+      this.keys = [{ code: "Enter", altKey: false, ctrlKey: true, shiftKey: false }];
       this.editMode = true;
     }
     execute() {

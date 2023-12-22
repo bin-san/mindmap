@@ -3,7 +3,7 @@ import Item from "../item.js";
 import * as svg from "../svg.js";
 
 
-export const SPACING_RANK = 16;
+export const SPACING_RANK = 32;
 const R = SPACING_RANK/2;
 
 export default class GraphLayout extends Layout {

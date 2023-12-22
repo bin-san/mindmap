@@ -1,0 +1,6 @@
+1. Multiline support:D
+2. Increase distance between items
+3. Increase Stroke width
+4. Image support
+5. Decluttering UI
+6. Style Improvement
