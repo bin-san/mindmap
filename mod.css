@@ -2,6 +2,51 @@
     display: none;
 }
 
+#navigation-system {
+    display: grid;
+    grid-template-columns: 29% 29% 29%;
+    grid-template-rows: 29% 29% 29%;
+    grid-row-gap: 2vmin;
+    grid-column-gap: 2vmin;
+    position: fixed;
+    width: 30vmin;
+    height: 30vmin;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10;
+}
+
+.nav-butt {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0px solid;
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px rgb(177, 175, 175);
+}
+
+.nav-butt:hover{
+    cursor: pointer;
+}
+
+.nav-butt:active{
+    background-color: lightblue;
+}
+
+#navigation-system div span{
+    font-size: 5.5vmin;
+    background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+        radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+    color: transparent;
+    -webkit-background-clip: text;
+}
+
+
+
+
+
+
 #mod-top-nav {
     display: flex;
     flex-direction: row;
@@ -67,7 +112,9 @@
     top: 10px;
     right: 10px;
     background-color: white;
-    box-shadow: 0px 0px 10px black;
+    box-shadow: 0px 0px 20px rgb(100, 100, 100);
+    border-radius: 5px;
+    padding: 10px 0px;
 }
 
 #mod-top-options span{

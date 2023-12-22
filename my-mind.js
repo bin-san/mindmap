@@ -4289,7 +4289,7 @@ ${text}`);
   // .js/title.js
   function onItemChange(_message, publisher) {
     if (publisher.isRoot && publisher.map == currentMap) {
-      document.title = currentMap.name + " :: My Mind";
+      document.title = currentMap.name + " - MindMap";
     }
   }
   function init18() {
