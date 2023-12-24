@@ -1,0 +1,6 @@
+Space: Enter into editing mode into the selected node
+alt: Exit editing mode from the selected node
+right_arrow, left_arrow, page_up, page_down: navigation
+Tab: create a new child while select mode
+Enter: create a new sibling while select mode 
+

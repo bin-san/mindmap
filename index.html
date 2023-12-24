@@ -15,42 +15,53 @@
 			window.mod = mod
 		</script>
 	</head>
-	<body>
-		<div id="navigation-system">
-			<div></div>
-			<div class="nav-butt">
-				<span class="material-symbols-outlined mod-more-button">arrow_upward</span>
+	<body style="user-select: none;">
+		<div id="mod-top-floating-bar" style="position: fixed;top:0px;left:0px;right:0px;z-index: 100;box-shadow: 0px 1px 10px rgb(27, 27, 27);">
+			<div id="mod-top-nav">
+				<div id="mod-logo">
+					<span id="mod-app-name" class="golden-gradient-text">MindMap</span>
+					<span id="mod-app-developer">bin-san</span>
+				</div>
+				<span class="material-symbols-outlined mod-more-button" id="mod-top-more">
+					more_vert
+				</span>
+				<div id="mod-top-options" style="display: none;">
+					<span id="mod-op-save">Save</span>
+					<span id="mod-op-import">Import</span>
+					<span id="mod-op-publish">Publish</span>
+				</div>
 			</div>
-			<div></div>
-
-			<div class="nav-butt">
-				<span class="material-symbols-outlined mod-more-button" >arrow_back</span>
-			</div>
-			<div class="nav-butt">
-				<span class="material-symbols-outlined mod-more-button">radio_button_checked</span>
-			</div>
-			<div class="nav-butt">
-				<span class="material-symbols-outlined mod-more-button" >arrow_forward</span>
-			</div>
-
-			<div></div>
-			<div class="nav-butt">
-				<span class="material-symbols-outlined mod-more-button" >arrow_downward</span>
-			</div>
-			<div></div>
-		</div>
-		<div id="mod-top-nav">
-			<div id="mod-logo">
-				<span id="mod-app-name" class="golden-gradient-text">MindMap</span>
-				<span id="mod-app-developer">bin-san</span>
-			</div>
-			<span class="material-symbols-outlined mod-more-button" id="mod-top-more">
-				more_vert
-			</span>
-			<div id="mod-top-options" style="display: none;">
-				<span id="mod-op-save">Save</span>
-				<span id="mod-op-import">Import</span>
-				<span id="mod-op-publish">Publish</span>
+			<div class="vert-center">
+				<div id="mod-top-action">
+					<style>
+						.xx1 {
+							font-size: 200%;
+							padding: 10px 10px;
+							color: rgb(2, 1, 44);
+						}
+						.xx-but:hover {
+							cursor: pointer;
+						}
+						.xx-but:active {
+							background-color: lightblue;
+						}
+					</style>
+					<div style="display: flex;justify-content:center;">
+						<span class="material-symbols-outlined xx1">
+						browse
+						</span>
+						<select id="layout" style="border: none;outline:none; font-size:100%;">
+							<option value="">(Inherit)</option>
+						</select>
+					</div>
+					<span class="material-symbols-outlined xx1 xx-but" id="insert-child-top-bar-mod">
+						swipe_right_alt
+					</span>
+					<span class="material-symbols-outlined xx1 xx-but" id="insert-sibling-top-bar-mod">
+						arrow_split
+					</span>
+					<span class="material-symbols-outlined xx1 xx-but">edit</span>
+				</div>
 			</div>
 		</div>
 		<main>

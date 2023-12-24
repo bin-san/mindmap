@@ -27,3 +27,4 @@ def new_doc_onclick(event):
         prev_doc_onclick()
 document.onclick = new_doc_onclick
 
+

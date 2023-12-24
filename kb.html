@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>External Keyboard Detection</title>
+</head>
+<body>
+    <script>
+        function handleKeyboardChange(event) {
+            if (event.matches) {
+                alert('External keyboard is likely attached.');
+            } else {
+                alert('No external keyboard detected.');
+            }
+        }
+
+        // Listen for changes in the keyboard media feature
+        var mediaQuery = window.matchMedia('(pointer: fine)');
+        mediaQuery.addListener(handleKeyboardChange);
+
+        // Initial check
+        handleKeyboardChange(mediaQuery);
+    </script>
+</body>
+</html>

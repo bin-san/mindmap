@@ -1011,6 +1011,31 @@
   new MapLayout("map", "Map");
 
   // .js/ui/layout.js
+  //sandipan edit
+  document.querySelector("#insert-child-top-bar-mod").addEventListener("click",()=>{
+    let item = currentItem;
+    let action2 = new InsertNewItem(item, item.children.length);
+    action(action2);
+    repo.get("edit").execute();
+    publish("command-child");
+  })
+
+  document.querySelector("#insert-sibling-top-bar-mod").addEventListener("click", ()=>{
+    let item = currentItem;
+    let action2;
+    if (item.isRoot) {
+      action2 = new InsertNewItem(item, item.children.length);
+    } else {
+      let parent = item.parent;
+      let index2 = parent.children.indexOf(item);
+      action2 = new InsertNewItem(parent, index2 + 1);
+    }
+    action(action2);
+    repo.get("edit").execute();
+    publish("command-sibling");
+  })
+
+
   var select2 = document.querySelector("#layout");
   function init6() {
     let layout = repo2.get("map");
@@ -3543,6 +3568,7 @@ ${text}`);
     }
     startEditing() {
       this.originalText = this.text;
+      this.dom.node.querySelector("div.content").style.backgroundColor = "lightgreen"
       this.dom.text.contentEditable = "true";
       this.dom.text.focus();
       document.execCommand("styleWithCSS", false, "false");
@@ -3551,6 +3577,8 @@ ${text}`);
       this.dom.text.addEventListener("blur", this);
     }
     stopEditing() {
+      //sandipan edit
+      this.dom.node.querySelector("div.content").style.backgroundColor = "lightblue"
       this.dom.text.removeEventListener("input", this);
       this.dom.text.removeEventListener("keydown", this);
       this.dom.text.removeEventListener("blur", this);
@@ -4382,8 +4410,7 @@ ${text}`);
     constructor() {
       super("newline", "Line break");
       this.keys = [
-        { code: "Enter", shiftKey: true },
-        { code: "Enter", ctrlKey: true }
+        { code: "Enter", shiftKey: true }
       ];
       this.editMode = true;
     }
@@ -4542,9 +4569,14 @@ ${text}`);
       if (editing) {
         repo.get("finish").execute();
       }
+      currentItem.dom.node.querySelector('div.content').style.backgroundColor = "white";
+      console.log("deselected.")
+      console.log(currentItem)
       currentItem.deselect();
     }
+    //TODO sandipan edit
     currentItem = item;
+    currentItem.dom.node.querySelector('div.content').style.backgroundColor = "lightblue";
     currentItem.select();
     currentMap.ensureItemVisibility(currentItem);
   }

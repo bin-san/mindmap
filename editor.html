@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0" />
     <title></title>
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/pell/dist/pell.min.css">
+    <link rel="stylesheet" type="text/css" href="./pell.min.css">
     <style>
         body {
             margin: 0;
@@ -28,13 +28,20 @@
     <script src="https://unpkg.com/pell"></script>
     <script>
 
+        /*
         var sendMessage = function(action, value) {
             window.parent.postMessage({
                 action: action,
                 value: value
             }, '*');
         };
+        */
 
+        var sendMessage = function(action, value) {
+            //dummy
+        }
+
+        /*
         window.addEventListener("message", function(e) {
             if (e.data && e.data.action) {
                 switch (e.data.action) {
@@ -48,6 +55,7 @@
                 }
             }
         }, false);
+        */
 
             window.editor = window.pell.init({
                 element: document.querySelector("main"),
