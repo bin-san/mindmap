@@ -31,7 +31,7 @@
 					<span id="mod-op-publish">Publish</span>
 				</div>
 			</div>
-			<div class="vert-center">
+			<div id="mod-top-overlay-1" class="vert-center" style="display: flex;background-color:whitesmoke;">
 				<div id="mod-top-action">
 					<style>
 						.xx1 {
@@ -60,7 +60,59 @@
 					<span class="material-symbols-outlined xx1 xx-but" id="insert-sibling-top-bar-mod">
 						arrow_split
 					</span>
-					<span class="material-symbols-outlined xx1 xx-but">edit</span>
+					<span class="material-symbols-outlined xx1 xx-but" id="mod-top-nav-text-edit-button">edit</span>
+				</div>
+			</div>
+			<div id="mod-top-overlay-2" class="vert-center" style="display: none;background-color:whitesmoke;">
+				<div id="mod-top-action-edit">
+					<style>
+						.xx1-icon {
+							font-size: 150%;
+							padding: 14px 10px;
+							color: rgb(2, 1, 44);
+							background-color: white;
+						}
+					</style>
+					<span class="material-symbols-outlined xx1-icon xx-but" onclick="
+					if (this.style.backgroundColor=='white'){
+						this.style.backgroundColor = 'lightblue';
+					}
+					else {
+						this.style.backgroundColor = 'white';
+					}
+					document.execCommand('heading',false,'H1');
+					">
+						format_h1
+					</span>
+					<span class="material-symbols-outlined xx1-icon xx-but" onclick="
+					if (this.style.backgroundColor=='white'){
+						this.style.backgroundColor = 'lightblue';
+					}
+					else {
+						this.style.backgroundColor = 'white';
+					}
+					document.execCommand('bold',false);
+					">
+						format_bold
+					</span>
+					<span class="material-symbols-outlined xx1-icon xx-but">
+						format_italic
+					</span>
+					<span class="material-symbols-outlined xx1-icon xx-but">
+						format_underlined
+					</span>
+					<span class="material-symbols-outlined xx1-icon xx-but">
+						format_strikethrough
+					</span>
+					<span class="material-symbols-outlined xx1-icon xx-but">
+						add_link
+					</span>
+					<span class="material-symbols-outlined xx1-icon xx-but">
+						image
+					</span>
+					<span class="material-symbols-outlined xx1-icon xx-but" style="background-color: red;display:none" id="tcb-mod-117c">
+						close
+					</span>
 				</div>
 			</div>
 		</div>

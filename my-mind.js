@@ -1012,6 +1012,18 @@
 
   // .js/ui/layout.js
   //sandipan edit
+  document.querySelector("#tcb-mod-117c").addEventListener("click", ()=>{
+    olive_100_2.style.display = "none";
+    olive_100_1.style.display = "flex";
+
+    //finish editing
+    repo.get("finish").execute();
+  })
+
+  document.querySelector("#mod-top-nav-text-edit-button").addEventListener("click",()=>{
+    startEditing();
+  })
+
   document.querySelector("#insert-child-top-bar-mod").addEventListener("click",()=>{
     let item = currentItem;
     let action2 = new InsertNewItem(item, item.children.length);
@@ -2808,7 +2820,7 @@ ${text}`);
       this.keys = [{ code: "KeyM", ctrlKey: true }];
     }
     execute() {
-      toggle2();
+      //toggle2(); //sandipan
     }
   }();
   new class Undo extends Command {
@@ -3593,6 +3605,9 @@ ${text}`);
     handleEvent(e) {
       switch (e.type) {
         case "input":
+          //sandipan
+          //caret update
+          //console.log(getSelection().getRangeAt(0))
           this.update();
           this.map.ensureItemVisibility(this);
           break;
@@ -3602,8 +3617,15 @@ ${text}`);
           }
           break;
         case "blur":
-          repo.get("finish").execute();
-          break;
+          //sandipan patches
+          console.log("blurring")
+          if (olive_100_2.style.display == "flex"){
+            break;
+          } 
+          else {
+            repo.get("finish").execute();
+            break;
+          }
       }
     }
     updateStatus() {
@@ -4553,6 +4575,8 @@ ${text}`);
   var throbber = document.querySelector("#throbber");
   var currentMap;
   var currentItem;
+  var olive_100_1 = document.querySelector("#mod-top-overlay-1");
+  var olive_100_2 = document.querySelector("#mod-top-overlay-2");
   var editing = false;
   function showMap(map) {
     currentMap && currentMap.hide();
@@ -4570,8 +4594,6 @@ ${text}`);
         repo.get("finish").execute();
       }
       currentItem.dom.node.querySelector('div.content').style.backgroundColor = "white";
-      console.log("deselected.")
-      console.log(currentItem)
       currentItem.deselect();
     }
     //TODO sandipan edit
@@ -4584,11 +4606,16 @@ ${text}`);
     throbber.hidden = !visible;
   }
   function startEditing() {
+    //sandipan edit formatting showing
+    olive_100_1.style.display = "none";
+    olive_100_2.style.display = "flex";
     editing = true;
     currentItem.startEditing();
   }
   function stopEditing() {
     editing = false;
+    document.querySelector("#mod-top-overlay-2").style.display = "none";
+    document.querySelector("#mod-top-overlay-1").style.display = "flex";
     return currentItem.stopEditing();
   }
   async function init19() {
@@ -4599,6 +4626,7 @@ ${text}`);
       e.preventDefault();
       return "";
     });
+    //sanhere
     init17();
     init15();
     init16(port3);

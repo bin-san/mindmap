@@ -151,6 +151,14 @@
     width: 100vmin;
 }
 
+#mod-top-action-edit {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100vmin;
+}
+
 .vert-center {
     display: flex;
     justify-content: center;

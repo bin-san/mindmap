@@ -2,9 +2,9 @@
   font-family: source sans pro, sans-serif;
 }
 svg > .item > foreignObject > .content {
-  font-weight: bold;
   border-width: 2px;
-  font-size: 140%;
+  border-color: gold;
+  font-size: 120%;
 }
 svg > .item > .toggle {
   display: none;
