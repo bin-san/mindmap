@@ -1,7 +1,9 @@
 1. Multiline support:D
 2. Increase distance between items
 3. Increase Stroke width
-4. Embed Trix to do Rich Text Typing
 5. Export Format 
 6. zoom lock
 7. remove pell editor
+8. Applying editing style: onbeforeinput TODO
+9. Recovering editing style from arbitary motion change TODO 
+

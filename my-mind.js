@@ -3357,7 +3357,10 @@ ${text}`);
       this.updateValue();
       const { resolvedLayout, resolvedShape, dom } = this;
       const { content, node: node11, connectors } = dom;
-      dom.text.style.color = this.resolvedTextColor;
+      //dom.text.style.color = this.resolvedTextColor;
+      //san e10
+      //console.log(window.mod.author);
+      san_edit.apply_editing_style(dom.text);
       node11.dataset.shape = resolvedShape.id;
       node11.dataset.align = resolvedLayout.computeAlignment(this);
       let fo = content.parentNode;
@@ -3378,7 +3381,8 @@ ${text}`);
       return this.dom.text.innerHTML;
     }
     set text(text) {
-      this.dom.text.innerHTML = text;
+      //this.dom.text.innerHTML = san_edit.style_chunk(text);
+      this.dom.text.innerHTML = text //to be removed on change of the previous TODO
       findLinks(this.dom.text);
       this.update();
     }
@@ -4577,6 +4581,7 @@ ${text}`);
   var currentItem;
   var olive_100_1 = document.querySelector("#mod-top-overlay-1");
   var olive_100_2 = document.querySelector("#mod-top-overlay-2");
+  var san_edit = new window.mod.SanEdit()
   var editing = false;
   function showMap(map) {
     currentMap && currentMap.hide();
@@ -4643,3 +4648,4 @@ ${text}`);
   }
   init19();
 })();
+console.log(window.mod.author)

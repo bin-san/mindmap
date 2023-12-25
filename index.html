@@ -10,10 +10,6 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 		<base target="_blank" />
 		<link rel="stylesheet" href="mod.css">
-		<script type="module" defer>
-			import * as mod from "./pyjs/mod.js"
-			window.mod = mod
-		</script>
 	</head>
 	<body style="user-select: none;">
 		<div id="mod-top-floating-bar" style="position: fixed;top:0px;left:0px;right:0px;z-index: 100;box-shadow: 0px 1px 10px rgb(27, 27, 27);">
@@ -67,47 +63,28 @@
 				<div id="mod-top-action-edit">
 					<style>
 						.xx1-icon {
-							font-size: 150%;
-							padding: 14px 10px;
+							font-size: 200%;
+							padding: 10px 10px;
 							color: rgb(2, 1, 44);
 							background-color: white;
 						}
 					</style>
-					<span class="material-symbols-outlined xx1-icon xx-but" onclick="
-					if (this.style.backgroundColor=='white'){
-						this.style.backgroundColor = 'lightblue';
-					}
-					else {
-						this.style.backgroundColor = 'white';
-					}
-					document.execCommand('heading',false,'H1');
-					">
-						format_h1
-					</span>
-					<span class="material-symbols-outlined xx1-icon xx-but" onclick="
-					if (this.style.backgroundColor=='white'){
-						this.style.backgroundColor = 'lightblue';
-					}
-					else {
-						this.style.backgroundColor = 'white';
-					}
-					document.execCommand('bold',false);
-					">
+					<span class="material-symbols-outlined xx1-icon xx-but" id="san-e1-bold" value="false">
 						format_bold
 					</span>
-					<span class="material-symbols-outlined xx1-icon xx-but">
+					<span class="material-symbols-outlined xx1-icon xx-but" id="san-e1-italic" value="false">
 						format_italic
 					</span>
-					<span class="material-symbols-outlined xx1-icon xx-but">
+					<span class="material-symbols-outlined xx1-icon xx-but" id="san-e1-underline" value="false">
 						format_underlined
 					</span>
-					<span class="material-symbols-outlined xx1-icon xx-but">
+					<span class="material-symbols-outlined xx1-icon xx-but" id="san-e1-strike" value="false">
 						format_strikethrough
 					</span>
-					<span class="material-symbols-outlined xx1-icon xx-but">
+					<span class="material-symbols-outlined xx1-icon xx-but" id="san-e1-link">
 						add_link
 					</span>
-					<span class="material-symbols-outlined xx1-icon xx-but">
+					<span class="material-symbols-outlined xx1-icon xx-but" id="san-e1-image">
 						image
 					</span>
 					<span class="material-symbols-outlined xx1-icon xx-but" style="background-color: red;display:none" id="tcb-mod-117c">
@@ -348,7 +325,11 @@
 		<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-auth.js"></script>
 
-		<script src="my-mind.js"></script>
+		<script type="module">
+			import * as mod from "./pyjs/mod.js"
+			window.mod = mod
+		</script>
+
 
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-383250-18"></script>
 		<script>
