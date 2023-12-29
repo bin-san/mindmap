@@ -1,106 +1,133 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0" />
-		<title>MindMap</title>
-		<link rel="icon" href="favicon.ico" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-		<link rel="stylesheet" href="my-mind.css"/>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-		<base target="_blank" />
-		<link rel="stylesheet" href="mod.css">
-	</head>
-	<body style="user-select: none;">
-		<div id="mod-top-floating-bar" style="position: fixed;top:0px;left:0px;right:0px;z-index: 100;box-shadow: 0px 1px 10px rgb(27, 27, 27);">
-			<div id="mod-top-nav">
-				<div id="mod-logo">
-					<span id="mod-app-name" class="golden-gradient-text">MindMap</span>
-					<span id="mod-app-developer">bin-san</span>
-				</div>
-				<span class="material-symbols-outlined mod-more-button" id="mod-top-more">
-					more_vert
-				</span>
-				<div id="mod-top-options" style="display: none;">
-					<span id="mod-op-save">Save</span>
-					<span id="mod-op-import">Import</span>
-					<span id="mod-op-publish">Publish</span>
-				</div>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0" />
+	<title>MindMap</title>
+	<link rel="icon" href="favicon.ico" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+	<link rel="stylesheet" href="my-mind.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<base target="_blank" />
+	<link rel="stylesheet" href="mod.css">
+	<link rel="stylesheet" type="text/css" href="./pell/dist/pell.css">
+
+</head>
+
+<body style="user-select: none;">
+	<div id="pell-editor" class="pell">
+		<dialog class="link-dialog">
+			<input type="text" placeholder="Enter a link..." style="outline: none;padding: 5px;">
+			<button id="link_button" onclick="" style="outline: none;padding: 5px 10px;">Ok</button>
+		</dialog>
+		<input type="file" class="hidden_image_input" accept=".png, .jpg, .jpeg, .webp, .gif, .svg, .bmp, .tiff, .ico, .apng" style="display: none;">
+	</div>
+	<div id="mod-top-floating-bar"
+		style="position: fixed;top:0px;left:0px;right:0px;z-index: 100;box-shadow: 0px 1px 10px rgb(27, 27, 27);">
+		<div id="mod-top-nav">
+			<div id="mod-logo">
+				<span id="mod-app-name" class="golden-gradient-text">MindMap</span>
+				<span id="mod-app-developer">binsan</span>
 			</div>
-			<div id="mod-top-overlay-1" class="vert-center" style="display: flex;background-color:whitesmoke;">
-				<div id="mod-top-action">
-					<style>
-						.xx1 {
-							font-size: 200%;
-							padding: 10px 10px;
-							color: rgb(2, 1, 44);
-						}
-						.xx-but:hover {
-							cursor: pointer;
-						}
-						.xx-but:active {
-							background-color: lightblue;
-						}
-					</style>
-					<div style="display: flex;justify-content:center;">
-						<span class="material-symbols-outlined xx1">
-						browse
-						</span>
-						<select id="layout" style="border: none;outline:none; font-size:100%;">
-							<option value="">(Inherit)</option>
-						</select>
-					</div>
-					<span class="material-symbols-outlined xx1 xx-but" id="insert-child-top-bar-mod">
-						swipe_right_alt
-					</span>
-					<span class="material-symbols-outlined xx1 xx-but" id="insert-sibling-top-bar-mod">
-						arrow_split
-					</span>
-					<span class="material-symbols-outlined xx1 xx-but" id="mod-top-nav-text-edit-button">edit</span>
-				</div>
-			</div>
-			<div id="mod-top-overlay-2" class="vert-center" style="display: none;background-color:whitesmoke;">
-				<div id="mod-top-action-edit">
-					<style>
-						.xx1-icon {
-							font-size: 200%;
-							padding: 10px 10px;
-							color: rgb(2, 1, 44);
-							background-color: white;
-						}
-					</style>
-					<span class="material-symbols-outlined xx1-icon xx-but" id="san-e1-bold" value="false">
-						format_bold
-					</span>
-					<span class="material-symbols-outlined xx1-icon xx-but" id="san-e1-italic" value="false">
-						format_italic
-					</span>
-					<span class="material-symbols-outlined xx1-icon xx-but" id="san-e1-underline" value="false">
-						format_underlined
-					</span>
-					<span class="material-symbols-outlined xx1-icon xx-but" id="san-e1-strike" value="false">
-						format_strikethrough
-					</span>
-					<span class="material-symbols-outlined xx1-icon xx-but" id="san-e1-link">
-						add_link
-					</span>
-					<span class="material-symbols-outlined xx1-icon xx-but" id="san-e1-image">
-						image
-					</span>
-					<span class="material-symbols-outlined xx1-icon xx-but" style="background-color: red;display:none" id="tcb-mod-117c">
-						close
-					</span>
-				</div>
+			<span class="material-symbols-outlined mod-more-button" id="mod-top-more">
+				more_vert
+			</span>
+			<div id="mod-top-options" style="display: none;">
+				<span id="mod-op-save">Save</span>
+				<span id="mod-op-import">Import</span>
+				<span id="mod-op-publish">Publish</span>
 			</div>
 		</div>
-		<main>
-			<div id="tip"></div>
-		</main>
+		<div id="mod-top-overlay-1" class="vert-center" style="display: flex;background-color:whitesmoke;">
+			<div id="mod-top-action">
+				<style>
+					.xx1 {
+						color: rgb(2, 1, 44);
+					}
 
+					.xx-but:hover {
+						cursor: pointer;
+					}
+
+					.xx-but:active {
+						background-color: lightblue;
+					}
+				</style>
+				<div style="display: flex;justify-content:center;">
+					<span class="material-symbols-outlined xx1">
+						browse
+					</span>
+					<select id="layout" style="border: none;outline:none; font-size:100%;">
+						<option value="">(Inherit)</option>
+					</select>
+				</div>
+				<span class="material-symbols-outlined xx1 xx-but" id="insert-child-top-bar-mod">
+					swipe_right_alt
+				</span>
+				<span class="material-symbols-outlined xx1 xx-but" id="insert-sibling-top-bar-mod">
+					arrow_split
+				</span>
+				<span class="material-symbols-outlined xx1 xx-but" id="mod-top-nav-text-edit-button">edit</span>
+				<div>
+					<span id="touch_undo" class="material-symbols-outlined xx1 xx-but" style="padding: 10px 5px;">
+						undo
+					</span>
+					<span id="touch_redo" class="material-symbols-outlined xx1 xx-but" style="padding: 10px 5px;">
+						redo
+					</span>
+				</div>
+				<span id="mod_relocate" class="material-symbols-outlined xx1 xx-but">
+					my_location
+				</span>
+			</div>
+		</div>
+		<div id="mod-top-overlay-2" class="vert-center" style="display: none;background-color:whitesmoke;">
+			<!--
+				<div id="mod-top-action-edit">
+				<style>
+					.xx1-icon {
+						font-size: 200%;
+						padding: 10px 10px;
+						color: rgb(2, 1, 44);
+						background-color: white;
+					}
+				</style>
+				<span class="material-symbols-outlined xx1-icon xx-but" id="san-e1-bold" value="false">
+					format_bold
+				</span>
+				<span class="material-symbols-outlined xx1-icon xx-but" id="san-e1-italic" value="false">
+					format_italic
+				</span>
+				<span class="material-symbols-outlined xx1-icon xx-but" id="san-e1-underline" value="false">
+					format_underlined
+				</span>
+				<span class="material-symbols-outlined xx1-icon xx-but" id="san-e1-strike" value="false">
+					format_strikethrough
+				</span>
+				<span class="material-symbols-outlined xx1-icon xx-but" id="san-e1-link">
+					add_link
+				</span>
+				<span class="material-symbols-outlined xx1-icon xx-but" id="san-e1-image">
+					image
+				</span>
+				<span class="material-symbols-outlined xx1-icon xx-but" style="background-color: red;display:none"
+					id="tcb-mod-117c">
+					close
+				</span>
+			</div>
+			-->
+		</div>
+	</div>
+	<main>
+		<div id="tip"></div>
+	</main>
+
+	<!--
 		<div id="ui" class="pane" hidden>
-			<h3>MindMap</h3>
+		<h3>MindMap</h3>
 
-			<div class="scrollable">
+		<div class="scrollable">
 
 			<p class="row">
 				<button data-command="new" title="New"><img src="img/new.png" alt="New" /></button>
@@ -111,37 +138,37 @@
 
 			<p>
 				<label><span>Layout</span>
-				<select id="layout">
-					<option value="">(Inherit)</option>
-				</select></label>
+					<select id="layout">
+						<option value="">(Inherit)</option>
+					</select></label>
 			</p>
 			<p>
 				<label><span>Shape</span>
-				<select id="shape">
-					<option value="">(Automatic)</option>
-				</select></label>
+					<select id="shape">
+						<option value="">(Automatic)</option>
+					</select></label>
 			</p>
 			<p>
 				<label><span>Value</span>
-				<select id="value">
-					<option value="">(None)</option>
-					<option value="num">Number</option>
-					<optgroup label="Formula">
-						<option value="sum">Sum</option>
-						<option value="avg">Average</option>
-						<option value="min">Minimum</option>
-						<option value="max">Maximum</option>
-					</optgroup>
-				</select></label>
+					<select id="value">
+						<option value="">(None)</option>
+						<option value="num">Number</option>
+						<optgroup label="Formula">
+							<option value="sum">Sum</option>
+							<option value="avg">Average</option>
+							<option value="min">Minimum</option>
+							<option value="max">Maximum</option>
+						</optgroup>
+					</select></label>
 			</p>
 			<p>
 				<label><span>Status</span>
-				<select id="status">
-					<option value="">None</option>
-					<option value="yes">Yes</option>
-					<option value="no">No</option>
-					<option value="computed">Autocompute</option>
-				</select></label>
+					<select id="status">
+						<option value="">None</option>
+						<option value="yes">Yes</option>
+						<option value="no">No</option>
+						<option value="computed">Autocompute</option>
+					</select></label>
 			</p>
 			<p>
 				<span>Item color</span>
@@ -173,75 +200,78 @@
 			</p>
 			<p>
 				<label><span>Icons</span>
-				<select id="icons"></select>
+					<select id="icons"></select>
 				</label>
 			</p>
 
-			</div>
-
-			<footer></footer>
-
-			<button id="toggle" title="Toggle UI" hidden></button>
-			<button data-command="help" title="Help"><img src="img/help.png" alt="Help" hidden/></button>
-			<button data-command="notes" title="Notes"><img src="img/notes.png" alt="Notes" hidden/></button>
-			<img id="throbber" src="img/throbber.gif" hidden/>
 		</div>
 
+		<footer></footer>
 
+		<button id="toggle" title="Toggle UI" hidden></button>
+		<button data-command="help" title="Help"><img src="img/help.png" alt="Help" hidden /></button>
+		<button data-command="notes" title="Notes"><img src="img/notes.png" alt="Notes" hidden /></button>
+		<img id="throbber" src="img/throbber.gif" hidden />
+	</div>
+	-->
+
+
+	<!--
 		<div id="io" class="pane" hidden>
-			<h3></h3>
-			<p>
-				<label><span>Storage</span>
+		<h3></h3>
+		<p>
+			<label><span>Storage</span>
 				<select id="backend"></select></label>
-			</p>
+		</p>
 
-			<div id="file">
-				<p class="desc">Local files are suitable for loading/saving files from other mindmapping applications.</p>
-				<p data-for="save">
-					<label><span>Format</span>
+		<div id="file">
+			<p class="desc">Local files are suitable for loading/saving files from other mindmapping applications.</p>
+			<p data-for="save">
+				<label><span>Format</span>
 					<select class="format"></select></label>
-				</p>
-				<p class="row" data-for="save load">
-					<button class="go"></button><button class="cancel">Cancel</button>
-				</p>
-			</div>
+			</p>
+			<p class="row" data-for="save load">
+				<button class="go"></button><button class="cancel">Cancel</button>
+			</p>
+		</div>
 
-			<div id="image">
-				<p class="desc">Export your design as an image.</p>
-				<p data-for="save">
-					<label><span>Format</span>
+		<div id="image">
+			<p class="desc">Export your design as an image.</p>
+			<p data-for="save">
+				<label><span>Format</span>
 					<select class="format">
 						<option value="png">PNG</option>
 						<option value="svg">SVG</option>
 					</select></label>
-				</p>
-				<p class="row">
-					<button class="go"></button><button class="cancel">Cancel</button>
-				</p>
-			</div>
+			</p>
+			<p class="row">
+				<button class="go"></button><button class="cancel">Cancel</button>
+			</p>
+		</div>
 
-			<div id="local">
-				<p class="desc">Your browser's localStorage can handle many mind maps and creates a permalink, but this URL cannot be shared.</p>
-				<p data-for="load">
-					<label><span>Saved maps</span>
+		<div id="local">
+			<p class="desc">Your browser's localStorage can handle many mind maps and creates a permalink, but this URL
+				cannot be shared.</p>
+			<p data-for="load">
+				<label><span>Saved maps</span>
 					<select class="list"></select></label>
-				</p>
-				<p class="row" data-for="save load">
-					<button class="go"></button><button class="cancel">Cancel</button>
-				</p>
-				<p class="row" data-for="load">
-					<button class="remove">Delete</button>
-				</p>
-			</div>
+			</p>
+			<p class="row" data-for="save load">
+				<button class="go"></button><button class="cancel">Cancel</button>
+			</p>
+			<p class="row" data-for="load">
+				<button class="remove">Delete</button>
+			</p>
+		</div>
 
-			<div id="firebase">
-				<p class="desc">Firebase offers real-time synchronization for true multi-user collaboration.</p>
-				<p data-for="save load">
-					<label><span>Server</span>
+		<div id="firebase">
+			<p class="desc">Firebase offers real-time synchronization for true multi-user collaboration.</p>
+			<p data-for="save load">
+				<label><span>Server</span>
 					<input type="text" class="server" /></label>
-				</p>
-				<p data-for="save load">
-					<label><span>Auth</span>
+			</p>
+			<p data-for="save load">
+				<label><span>Auth</span>
 					<select class="auth">
 						<option value="">(None)</option>
 						<option value="facebook">Facebook</option>
@@ -249,94 +279,108 @@
 						<option value="github">GitHub</option>
 						<option value="google">Google</option>
 					</select></label>
-				</p>
-				<p data-for="load">
-					<label><span>Saved maps</span>
+			</p>
+			<p data-for="load">
+				<label><span>Saved maps</span>
 					<select class="list"></select></label>
-				</p>
-				<p class="row" data-for="save load">
-					<button class="go"></button><button class="cancel">Cancel</button>
-				</p>
-				<p class="row" data-for="load">
-					<button class="remove">Delete</button>
-				</p>
-			</div>
+			</p>
+			<p class="row" data-for="save load">
+				<button class="go"></button><button class="cancel">Cancel</button>
+			</p>
+			<p class="row" data-for="load">
+				<button class="remove">Delete</button>
+			</p>
+		</div>
 
-			<div id="webdav">
-				<p class="desc">Use this to access a generic DAV-like REST API.</p>
-				<p data-for="save load">
-					<label><span>URL</span>
+		<div id="webdav">
+			<p class="desc">Use this to access a generic DAV-like REST API.</p>
+			<p data-for="save load">
+				<label><span>URL</span>
 					<input type="text" class="url" /></label>
-				</p>
-				<p class="row" data-for="save load">
-					<button class="go"></button><button class="cancel">Cancel</button>
-				</p>
-			</div>
+			</p>
+			<p class="row" data-for="save load">
+				<button class="go"></button><button class="cancel">Cancel</button>
+			</p>
+		</div>
 
-			<div id="gdrive">
-				<p class="desc">Maps stored in Google Drive have a permalink URL and can be shared with other users, if you allow this by setting proper permissions (inside Google Drive itself).</p>
-				<p data-for="save">
-					<label><span>Format</span>
+		<div id="gdrive">
+			<p class="desc">Maps stored in Google Drive have a permalink URL and can be shared with other users, if you
+				allow this by setting proper permissions (inside Google Drive itself).</p>
+			<p data-for="save">
+				<label><span>Format</span>
 					<select class="format"></select></label>
-				</p>
-				<p class="row" data-for="save load">
-					<button class="go"></button><button class="cancel">Cancel</button>
-				</p>
-			</div>
+			</p>
+			<p class="row" data-for="save load">
+				<button class="go"></button><button class="cancel">Cancel</button>
+			</p>
 		</div>
+	</div>
+	-->
 
+	<!--
 		<div id="help" class="pane" hidden>
-			<h3>Help</h3>
+		<h3>Help</h3>
 
-			<p>Navigation</p>
-			<table class="navigation"></table>
+		<p>Navigation</p>
+		<table class="navigation"></table>
 
-			<p>Manipulation</p>
-			<table class="manipulation"></table>
+		<p>Manipulation</p>
+		<table class="manipulation"></table>
 
-			<p>Editing</p>
-			<table class="editing"></table>
+		<p>Editing</p>
+		<table class="editing"></table>
 
-			<p>Other</p>
-			<table class="other"></table>
-		</div>
+		<p>Other</p>
+		<table class="other"></table>
+	</div>
+	-->
+
+	<!--
 
 		<div id="notes" class="pane" hidden>
-			<h3>Topic Notes</h3>
-			<iframe sandbox="allow-scripts" src="editor.html"></iframe>
-		</div>
+		<h3>Topic Notes</h3>
+		<iframe sandbox="allow-scripts" src="editor.html"></iframe>
+	</div>
+	-->
 
-		<div id="context-menu" hidden>
-			<button data-command="notes"></button>
-			<span></span>
-			<button data-command="insert-child"></button>
-			<button data-command="insert-sibling"></button>
-			<button data-command="delete"></button>
-			<span></span>
-			<button data-command="edit"></button>
-			<button data-command="value"></button>
-			<span></span>
-			<button data-command="undo"></button>
-			<button data-command="redo"></button>
-			<button data-command="center"></button>
-		</div>
+	<div id="context-menu" hidden>
+		<button data-command="notes"></button>
+		<span></span>
+		<button data-command="insert-child"></button>
+		<button data-command="insert-sibling"></button>
+		<button data-command="delete"></button>
+		<span></span>
+		<button data-command="edit"></button>
+		<button data-command="value"></button>
+		<span></span>
+		<button data-command="undo"></button>
+		<button data-command="redo"></button>
+		<button data-command="center"></button>
+	</div>
 
-		<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
-		<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
-		<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-auth.js"></script>
+</body>
 
-		<script type="module">
-			import * as mod from "./pyjs/mod.js"
-			window.mod = mod
-		</script>
+<!--
+
+<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-auth.js"></script>
+-->
+<script src="./pell/dist/pell.js"></script>
+<script type="module">
+	import * as mod from "./pyjs/mod.js"
+	window.mod = mod
+</script>
 
 
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-383250-18"></script>
-		<script>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag("js", new Date());
-		  gtag("config", "UA-383250-18");
-		</script>
-	</body>
+<!--
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-383250-18"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag() { dataLayer.push(arguments); }
+	gtag("js", new Date());
+	gtag("config", "UA-383250-18");
+</script>
+-->
+
 </html>

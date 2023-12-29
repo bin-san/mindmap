@@ -1,0 +1,4 @@
+1. When not focused, the tool bar does not work: Done
+2. Implement undo redo options
+3. Implement better view for link
+4. Images should use files

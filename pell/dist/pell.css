@@ -1,0 +1,40 @@
+.pell-content {
+  text-align: left;
+  min-width: 0.5em;
+  min-height: 1.3em;
+  line-height: 1.3em;
+  outline: none;
+}
+
+.pell-actionbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100vmin;
+}
+
+.pell-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  color: rgb(146, 146, 233);
+  vertical-align: bottom; }
+
+.pell-button-selected {
+  color: rgb(0, 0, 66);
+ }
+
+ .always-selected{
+  color: rgb(0, 0, 66);
+ }
+
+dialog {
+  background-color: lightgray;
+  padding: 30px 30px;
+  border: 0px solid;
+  border-radius: 4px;
+  box-shadow: 0px 0px 5px black;
+  z-index: 10000;
+}

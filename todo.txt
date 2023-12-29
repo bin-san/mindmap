@@ -1,9 +1,15 @@
-1. Multiline support:D
 2. Increase distance between items
 3. Increase Stroke width
 5. Export Format 
-6. zoom lock
-7. remove pell editor
-8. Applying editing style: onbeforeinput TODO
-9. Recovering editing style from arbitary motion change TODO 
+7. remove pell editor: D
+
+** Major change to the internals: Trix Editor as a direct child of the svg node!!:Done
+
+13. Make it faster and more efficient
+14. Bring in view
+15. Image Support 
+16. UI Fixes
+17. Testing (update6: remember?)
+
+** Pell integration instead of trix. Huge Customization.
 

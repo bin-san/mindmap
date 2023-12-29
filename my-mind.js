@@ -78,10 +78,20 @@
     index++;
   }
   function back() {
-    actions[--index].undo();
+    try{
+      actions[--index].undo();
+    }
+    catch(error){
+      index++;
+    }
   }
   function forward() {
-    actions[index++].do();
+    try{
+      actions[index++].do();
+    }
+    catch(error){
+      index--;
+    }
   }
   function canBack() {
     return !!index;
@@ -90,7 +100,7 @@
     return index != actions.length;
   }
 
-  // .js/ui/help.js
+  /*/ .js/ui/help.js
   var help_exports = {};
   __export(help_exports, {
     close: () => close,
@@ -186,9 +196,9 @@
   }
   function close() {
     node3.hidden = true;
-  }
+  }*/
 
-  // .js/ui/notes.js
+  /*/ .js/ui/notes.js
   var notes_exports = {};
   __export(notes_exports, {
     close: () => close2,
@@ -227,13 +237,13 @@
       }, "*");
     });
     window.addEventListener("message", onMessage);
-  }
+  }*/
 
-  // .js/ui/color.js
+  /*/ .js/ui/color.js
   var color_exports = {};
   __export(color_exports, {
     init: () => init3
-  });
+  });*/
 
   // .js/action.js
   var Action = class {
@@ -291,9 +301,17 @@
       super();
       this.item = item;
       this.parent = item.parent;
-      this.index = this.parent.children.indexOf(this.item);
+      if (this.parent.children){
+        this.index = this.parent.children.indexOf(this.item);
+      }
+      else {
+        this.godfather = true
+      }
     }
     do() {
+      if (this.godfather){
+        return
+      }
       this.parent.removeChild(this.item);
       selectItem(this.parent);
     }
@@ -497,7 +515,7 @@
     action(action2);
   }
 
-  // .js/ui/text-color.js
+  /*/ .js/ui/text-color.js
   var text_color_exports = {};
   __export(text_color_exports, {
     init: () => init4
@@ -514,9 +532,9 @@
     let color = e.target.dataset.color || "";
     let action2 = new SetTextColor(currentItem, color);
     action(action2);
-  }
+  }*/
 
-  // .js/ui/value.js
+  /*/ .js/ui/value.js
   var value_exports = {};
   __export(value_exports, {
     init: () => init5,
@@ -544,7 +562,7 @@
       let action2 = new SetValue(currentItem, value || null);
       action(action2);
     }
-  }
+  }*/
 
   // .js/ui/layout.js
   var layout_exports = {};
@@ -1012,6 +1030,8 @@
 
   // .js/ui/layout.js
   //sandipan edit
+  /*
+  
   document.querySelector("#tcb-mod-117c").addEventListener("click", ()=>{
     olive_100_2.style.display = "none";
     olive_100_1.style.display = "flex";
@@ -1019,6 +1039,8 @@
     //finish editing
     repo.get("finish").execute();
   })
+  
+  */
 
   document.querySelector("#mod-top-nav-text-edit-button").addEventListener("click",()=>{
     startEditing();
@@ -1089,7 +1111,7 @@
     return node11;
   }
 
-  // .js/ui/icon.js
+  /*/ .js/ui/icon.js
   var icon_exports = {};
   __export(icon_exports, {
     init: () => init7,
@@ -1105,14 +1127,14 @@
   function onChange3() {
     let action2 = new SetIcon(currentItem, select3.value);
     action(action2);
-  }
+  }*/
 
-  // .js/ui/shape.js
+  /*/ .js/ui/shape.js
   var shape_exports = {};
   __export(shape_exports, {
     init: () => init8,
     update: () => update4
-  });
+  });*/
 
   // .js/shape/shape.js
   var VERTICAL_OFFSET = 0.5;
@@ -1180,7 +1202,7 @@
   };
   new Underline();
 
-  // .js/ui/shape.js
+  /*/ .js/ui/shape.js
   var select4 = document.querySelector("#shape");
   function init8() {
     repo3.forEach((shape) => select4.append(shape.option));
@@ -1198,9 +1220,9 @@
     let shape = repo3.get(select4.value);
     let action2 = new SetShape(currentItem, shape);
     action(action2);
-  }
+  }*/
 
-  // .js/ui/status.js
+  /*/ .js/ui/status.js
   var status_exports = {};
   __export(status_exports, {
     init: () => init9,
@@ -1233,9 +1255,9 @@
     let status = stringToStatus(select5.value);
     let action2 = new SetStatus(currentItem, status);
     action(action2);
-  }
+  }*/
 
-  // .js/ui/tip.js
+  /*/ .js/ui/tip.js
   var tip_exports = {};
   __export(tip_exports, {
     init: () => init10
@@ -1251,9 +1273,9 @@
     unsubscribe("command-sibling", hide);
     node7.removeEventListener("click", hide);
     node7.hidden = true;
-  }
+  }*/
 
-  // .js/ui/io.js
+  /*/ .js/ui/io.js
   var io_exports = {};
   __export(io_exports, {
     hide: () => hide2,
@@ -1262,9 +1284,9 @@
     quickSave: () => quickSave,
     restore: () => restore,
     show: () => show
-  });
+  });*/
 
-  // .js/ui/backend/backend.js
+  /*/ .js/ui/backend/backend.js
   var BackendUI = class {
     constructor(backend, label) {
       this.backend = backend;
@@ -1345,9 +1367,9 @@
     data.sort((a, b) => a.name.localeCompare(b.name));
     let options = data.map((item) => new Option(item.name, item.id));
     select7.append(...options);
-  }
+  }*/
 
-  // .js/backend/backend.js
+  /*/ .js/backend/backend.js
   var Backend = class {
     constructor(id) {
       this.id = id;
@@ -1356,9 +1378,9 @@
     reset() {
     }
   };
-  var repo5 = new Map();
+  var repo5 = new Map();*/
 
-  // .js/backend/local.js
+  /*/ .js/backend/local.js
   var Local = class extends Backend {
     constructor() {
       super("local");
@@ -1391,7 +1413,7 @@
         return {};
       }
     }
-  };
+  };*/
 
   // .js/format/format.js
   var Format = class {
@@ -1427,7 +1449,7 @@
     return str.replace(/<br\s*\/?>/g, "\n");
   }
 
-  // .js/ui/backend/local.js
+  /*/ .js/ui/backend/local.js
   var LocalUI = class extends BackendUI {
     constructor() {
       super(new Local(), "Browser storage");
@@ -1495,9 +1517,9 @@
         this.error(e);
       }
     }
-  };
+  };*/
 
-  // .js/backend/file.js
+  /*/ .js/backend/file.js
   var File = class extends Backend {
     constructor() {
       super("file");
@@ -1532,7 +1554,7 @@
         input.click();
       });
     }
-  };
+  };*/
 
   // .js/format/native.js
   var Native = class extends Format {
@@ -1877,7 +1899,7 @@
     select7.append(...nodes);
   }
 
-  // .js/ui/backend/file.js
+  /*/ .js/ui/backend/file.js
   var FileUI = class extends BackendUI {
     constructor() {
       super(new File(), "File");
@@ -1917,9 +1939,9 @@
       localStorage.setItem(`${this.prefix}.format`, this.format.value);
       super.submit();
     }
-  };
+  };*/
 
-  // .js/backend/webdav.js
+  /*/ .js/backend/webdav.js
   var WebDAV = class extends Backend {
     constructor() {
       super("webdav");
@@ -1948,9 +1970,9 @@
 ${text}`);
       }
     }
-  };
+  };*/
 
-  // .js/ui/backend/webdav.js
+  /*/ .js/ui/backend/webdav.js
   var WebDAVUI = class extends BackendUI {
     constructor() {
       super(new WebDAV(), "Generic WebDAV");
@@ -2003,9 +2025,9 @@ ${text}`);
         this.error(e);
       }
     }
-  };
+  };*/
 
-  // .js/backend/image.js
+  /*/ .js/backend/image.js
   var ImageBackend = class extends Backend {
     constructor() {
       super("image");
@@ -2046,9 +2068,9 @@ ${text}`);
     return new Promise((resolve) => {
       img.onload = () => resolve(img);
     });
-  }
+  }*/
 
-  // .js/ui/backend/image.js
+  /*/ .js/ui/backend/image.js
   var ImageUI = class extends BackendUI {
     constructor() {
       super(new ImageBackend(), "Image");
@@ -2062,9 +2084,9 @@ ${text}`);
     }
     load() {
     }
-  };
+  };*/
 
-  // .js/backend/gdrive.js
+  /*/ .js/backend/gdrive.js
   var SCOPE = "https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.install";
   var CLIENT_ID = "767837575056-h87qmlhmhb3djhaaqta5gv2v3koa9hii.apps.googleusercontent.com";
   var API_KEY = "AIzaSyCzu1qVxlgufneOYpBgDJXN6Z9SNVcHYWM";
@@ -2207,9 +2229,9 @@ ${text}`);
         }
       });
     });
-  }
+  }*/
 
-  // .js/ui/backend/gdrive.js
+  /*/ .js/ui/backend/gdrive.js
   var GDriveUI = class extends BackendUI {
     constructor() {
       super(new GDrive(), "Google Drive");
@@ -2272,9 +2294,9 @@ ${text}`);
       };
       return data;
     }
-  };
+  };*/
 
-  // .js/backend/firebase.js
+  /*/ .js/backend/firebase.js
   var Firebase = class extends Backend {
     constructor() {
       super("firebase");
@@ -2432,9 +2454,9 @@ ${text}`);
       let result = await firebase.auth().signInWithPopup(provider);
       return result.user;
     }
-  };
+  };*/
 
-  // .js/ui/backend/firebase.js
+  /*/ .js/ui/backend/firebase.js
   var FirebaseUI = class extends BackendUI {
     constructor() {
       super(new Firebase(), "Firebase");
@@ -2583,9 +2605,9 @@ ${text}`);
       }
       this.go.textContent = this.mode.charAt(0).toUpperCase() + this.mode.substring(1);
     }
-  };
+  };*/
 
-  // .js/ui/io.js
+  /*/ .js/ui/io.js
   var currentMode = "load";
   var currentBackend = null;
   var node8 = document.querySelector("#io");
@@ -2686,7 +2708,7 @@ ${text}`);
       let arr = Object.entries(data).map((pair) => pair.map(encodeURIComponent).join("="));
       history.replaceState(null, "", "?" + arr.join("&"));
     }
-  }
+  }*/
 
   // .js/ui/context-menu.js
   var node9 = document.querySelector("#context-menu");
@@ -2738,7 +2760,7 @@ ${text}`);
     node9.hidden = true;
   }
 
-  // .js/ui/ui.js
+  /*/ .js/ui/ui.js
   var node10 = document.querySelector("#ui");
   function isActive2() {
     return node10.contains(document.activeElement) || isActive();
@@ -2776,16 +2798,16 @@ ${text}`);
   function init13(port4) {
     [
       layout_exports,
-      shape_exports,
-      icon_exports,
-      value_exports,
-      status_exports,
-      color_exports,
-      text_color_exports,
-      help_exports,
-      tip_exports,
-      notes_exports,
-      io_exports
+      //shape_exports,
+      //icon_exports,
+      //value_exports,
+      //status_exports,
+      //color_exports,
+      //text_color_exports,
+      //help_exports,
+      //tip_exports,
+      //notes_exports,
+      //io_exports
     ].forEach((ui5) => ui5.init());
     init12(port4);
     subscribe("item-select", update6);
@@ -2796,7 +2818,9 @@ ${text}`);
     });
     node10.addEventListener("click", onClick3);
     restore();
-  }
+  }*/
+
+  //Necessary Out of Crap: Sandipan
 
   // .js/command/command.js
   var PAN_AMOUNT = 15;
@@ -3342,6 +3366,7 @@ ${text}`);
       this.dom.node.classList.remove("current");
     }
     update(options = {}) {
+      //e55 san
       options = Object.assign({}, UPDATE_OPTIONS, options);
       const { map, children, parent } = this;
       if (!map || !map.isVisible) {
@@ -3351,31 +3376,33 @@ ${text}`);
         let childUpdateOptions = { parent: false, children: true };
         children.forEach((child) => child.update(childUpdateOptions));
       }
+      
       publish("item-change", this);
+      
       this.updateStatus();
       this.updateIcon();
       this.updateValue();
+      
       const { resolvedLayout, resolvedShape, dom } = this;
       const { content, node: node11, connectors } = dom;
-      //dom.text.style.color = this.resolvedTextColor;
-      //san e10
-      //console.log(window.mod.author);
-      san_edit.apply_editing_style(dom.text);
+      
       node11.dataset.shape = resolvedShape.id;
       node11.dataset.align = resolvedLayout.computeAlignment(this);
+      
       let fo = content.parentNode;
       let size = [
-        Math.max(content.offsetWidth, content.scrollWidth),
-        Math.max(content.offsetHeight, content.scrollHeight)
+        Math.ceil(Math.max(content.offsetWidth, content.scrollWidth)),
+        Math.ceil(Math.max(content.offsetHeight, content.scrollHeight))
       ];
       fo.setAttribute("width", String(size[0]));
       fo.setAttribute("height", String(size[1]));
       connectors.innerHTML = "";
-      resolvedLayout.update(this);
+      resolvedLayout.update(this);//here to look?
       resolvedShape.update(this);
       if (options.parent && parent) {
         parent.update({ children: false });
       }
+      //sanboard position update
     }
     get text() {
       return this.dom.text.innerHTML;
@@ -3583,25 +3610,22 @@ ${text}`);
       this.update();
     }
     startEditing() {
+      //sanboard.style.display = "block";//nudebinsan
+      this.dom.node.querySelector("div.content").style.backgroundColor = "lightgreen";
+      trix_editor.innerHTML = this.text;
+      this.dom.text.style.display = "none";
+      this.dom.node.querySelector('div.content').appendChild(trix_editor);
+      trix_editor.focus();
       this.originalText = this.text;
-      this.dom.node.querySelector("div.content").style.backgroundColor = "lightgreen"
-      this.dom.text.contentEditable = "true";
-      this.dom.text.focus();
-      document.execCommand("styleWithCSS", false, "false");
-      this.dom.text.addEventListener("input", this);
-      this.dom.text.addEventListener("keydown", this);
-      this.dom.text.addEventListener("blur", this);
+      this.update();
     }
     stopEditing() {
       //sandipan edit
-      this.dom.node.querySelector("div.content").style.backgroundColor = "lightblue"
-      this.dom.text.removeEventListener("input", this);
-      this.dom.text.removeEventListener("keydown", this);
-      this.dom.text.removeEventListener("blur", this);
-      this.dom.text.blur();
-      this.dom.text.contentEditable = "false";
-      let result = this.dom.text.innerHTML;
+      this.dom.node.querySelector("div.content").style.backgroundColor = "lightblue";
+      trix_editor.remove();
+      let result = trix_editor.innerHTML;
       this.dom.text.innerHTML = this.originalText;
+      this.dom.text.style.display = "block";
       this.originalText = "";
       this.update();
       return result;
@@ -3610,8 +3634,7 @@ ${text}`);
       switch (e.type) {
         case "input":
           //sandipan
-          //caret update
-          //console.log(getSelection().getRangeAt(0))
+          console.log("inputting..")
           this.update();
           this.map.ensureItemVisibility(this);
           break;
@@ -3747,10 +3770,11 @@ ${text}`);
       }, options);
       this.style.textContent = css;
       this.node.style.fontSize = `${this.fontSize}px`;
-      let root = new Item();
+      let root = new Item();//god father addition
       root.text = resolvedOptions.root;
       root.layout = resolvedOptions.layout;
       this.root = root;
+      supremeParent = this.root;
     }
     static fromJSON(data) {
       return new this().fromJSON(data);
@@ -4035,7 +4059,9 @@ ${text}`);
     });
     port2.addEventListener("dblclick", (e) => {
       let item = currentMap.getItemFor(e.target);
-      item && repo.get("edit").execute();
+      if(!editing){
+        item && repo.get("edit").execute()
+      }
     });
     port2.addEventListener("wheel", (e) => {
       const { deltaY } = e;
@@ -4476,7 +4502,7 @@ ${text}`);
     }
     execute() {
       if (editing) {
-        document.execCommand(this.command, false);
+        //document.execCommand(this.command, false);
       } else {
         repo.get("edit").execute();
         let selection = getSelection();
@@ -4575,13 +4601,58 @@ ${text}`);
   }();
 
   // .js/my-mind.js
+  //san var declar main
   var port3 = document.querySelector("main");
   var throbber = document.querySelector("#throbber");
   var currentMap;
   var currentItem;
   var olive_100_1 = document.querySelector("#mod-top-overlay-1");
   var olive_100_2 = document.querySelector("#mod-top-overlay-2");
-  var san_edit = new window.mod.SanEdit()
+  var supremeParent;
+
+  // mod-relocate
+  document.querySelector("#mod_relocate").onclick = ()=>{
+    //currentMap.moveTo(0,0);
+    let top = olive_100_1.offsetTop+olive_100_1.offsetHeight+50
+    let left = 50
+    currentMap.moveTo([left, top])
+    //let svg = document.querySelector("svg")
+    //svg.style.top = `${top}px`
+    //svg.style.left = `${left}px`
+  }
+
+  //undo redo for touch surfaces
+  olive_100_1.querySelector("#touch_undo").onclick = ()=>{
+    console.log("hi")
+    back();
+  }
+
+  olive_100_1.querySelector("#touch_redo").onclick = ()=>{
+    forward()
+  }
+
+  var trix_editor = document.querySelector("#pell-editor").querySelector("div.pell-content");
+  trix_editor.remove();
+
+  function isActive(){
+    return false
+  }
+
+  function isActive2(){
+    return false
+  }
+
+  trix_editor.oninput = ()=>{
+      currentItem.update();
+      currentItem.map.ensureItemVisibility(currentItem);
+  }
+
+
+  olive_100_2.onclick = ()=>{
+    currentItem.update();
+    currentItem.map.ensureItemVisibility(currentItem);
+  }
+
   var editing = false;
   function showMap(map) {
     currentMap && currentMap.hide();
@@ -4632,16 +4703,17 @@ ${text}`);
       return "";
     });
     //sanhere
+    init6();
     init17();
     init15();
     init16(port3);
     init18();
-    init13(port3);
+    //init13(port3);
     syncPort();
     showMap(new Map2());
   }
   function syncPort() {
-    let portSize = [window.innerWidth - getWidth(), window.innerHeight];
+    let portSize = [window.innerWidth /* - getWidth()*/, window.innerHeight];
     port3.style.width = portSize[0] + "px";
     port3.style.height = portSize[1] + "px";
     currentMap && currentMap.ensureItemVisibility(currentItem);

@@ -2,6 +2,15 @@
     display: none;
 }
 
+#sanboard {
+    width: fit-content;
+    display: block;
+    position: absolute;
+    top: 200px;
+    z-index: 1001;
+    background-color: whitesmoke;
+}
+
 
 #navigation-system {
     display: grid;
@@ -162,4 +171,14 @@
 .vert-center {
     display: flex;
     justify-content: center;
+    align-items: center;
+    padding: 12px;
 }
+
+
+#sanboard {
+    width: fit-content;
+    height: fit-content;
+    display: block;
+}
+
