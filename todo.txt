@@ -19,4 +19,7 @@
 19. Image Editing Criteria
 20. Give more space for laptop screen
 21. tag manager
+22. fix layout selection
+23. Do you want to save the changes
+Bring options in the describe
 

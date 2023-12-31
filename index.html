@@ -12,20 +12,20 @@
 	<base target="_blank" />
 	<link rel="stylesheet" href="mod.css">
 	<link rel="stylesheet" type="text/css" href="./pell/dist/pell.css">
-	<script src="./save.js"></script>
-
+	<script src="./io.js"></script>
+	<script src="./main.js"></script>
 </head>
 
 <body style="user-select: none;">
-	<dialog id="details_d" style="width: 100vmin;">
-		<div style="display: flex;flex-direction: column;row-gap: 10px;">
-			<div style="font-weight: bold;font-size: large;border-bottom: 2px solid;padding-bottom: 10px;">MindMap Details</div><br>
+	<dialog id="details_d" style="width: min(100vmin, 400px);">
+		<div style="display: flex;flex-direction: column;row-gap: 20px;">
+			<div style="font-weight: bold;font-size: large;border-bottom: 2px solid;padding-bottom: 10px;">MindMap Details</div>
 			<input type="text" id="details_title" placeholder="Title">
 			<textarea id="details_description" placeholder="Description" rows="4"></textarea>
 			<input type="text" id="details_author" placeholder="Author Name">
 			<input type="text" id="details_authormail" placeholder="Author Email">
 			<input type="text" id="details_tags" placeholder="Tags" style="display: none;">
-			<div style="display: flex;column-gap: 10px;">
+			<div style="display: flex;column-gap: 20px;">
 				<script>
 					function details_d_f1(event){
 						TITLE = document.querySelector("#details_title").value
@@ -48,7 +48,8 @@
 					function save_me(event){
 						let filename = event.target.parentElement.previousElementSibling.value;
 						if(filename) saveToFile(filename);
-						document.querySelector('#filename_d').open = false;
+						let x = document.querySelector('#filename_d');
+						x.open = false;
 					}
 				</script>
 				<button class="text_button" onclick="save_me(event)">Save</button>
@@ -120,10 +121,23 @@
 				</span>
 			</div>
 			<div id="mod-top-options" style="display: none;">
-				<span id="mod-op-save" onclick="event.target.parentElement.style.display='none';let x = document.querySelector('#filename_d');x.open=true;x.querySelector('input').focus();">Save</span>
-				<span id="mod-op-import">Import</span>
+				<span id="mod-op-save" onclick="event.target.parentElement.style.display='none';let x = document.querySelector('#filename_d');x.open=true;let i = x.querySelector('input');i.value = removeFileExtension(FILE_NAME);i.focus();">Save</span>
+				<span id="mod-op-import" onclick="document.querySelector('#file_importer_1').click()">Import</span>
+
+				<input type="file" style="display: none;" accept=".mindmap" id="file_importer_1" onchange="importFromFile()">
+
 				<span id="mod-op-publish">Publish</span>
-				<span id="mod-op-describe" onclick="document.querySelector('#details_d').open = true;">Describe</span>
+				<script>
+					function describe_field_update(){
+						document.querySelector("#details_title").value = TITLE;
+						document.querySelector("#details_description").value = DESCRIPTION;
+						document.querySelector("#details_author").value = AUTHOR;
+						document.querySelector("#details_authormail").value = AUTHOR_MAIL;
+						document.querySelector("#details_tags").value = TAGS.toString();
+						document.querySelector("#details_title").focus();
+					}
+				</script>
+				<span id="mod-op-describe" onclick="document.querySelector('#details_d').open = true;describe_field_update();">Describe</span>
 			</div>
 		</div>
 		<div id="mod-top-overlay-1" class="vert-center" style="display: flex;background-color:whitesmoke;">
@@ -140,10 +154,25 @@
 					.xx-but:active {
 						background-color: lightblue;
 					}
+					.sxx1 {
+						display: none;
+					}
 				</style>
-				<div style="display: flex;justify-content:center;">
-					<span class="material-symbols-outlined xx1">
-						browse
+				<div style="display: flex;justify-content:center;" id="select_logo_1">
+					<span class="material-symbols-outlined xx1 sxx1" id="dyn_logo_inherit">
+						flash_auto
+					</span>
+					<span class="material-symbols-outlined xx1" id="dyn_logo_map">
+						map
+					</span>
+					<span class="material-symbols-outlined xx1 sxx1" id="dyn_logo_graph">
+						account_tree
+					</span>
+					<span class="material-symbols-outlined xx1 sxx1" id="dyn_logo_tree">
+						nature
+					</span>
+					<span class="material-symbols-outlined xx1 sxx1" id="dyn_logo_default">
+						not_listed_location
 					</span>
 					<select id="layout" style="border: none;outline:none; font-size:100%;">
 						<option value="">(Inherit)</option>

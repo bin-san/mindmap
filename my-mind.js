@@ -1,3 +1,6 @@
+var CURRENT_MAP;
+var CURRENT_ITEM;
+var MAIN_PORT;
 (() => {
   var __defProp = Object.defineProperty;
   var __markAsModule = (target) => __defProp(target, "__esModule", { value: true });
@@ -1096,7 +1099,35 @@
     getOption("").disabled = currentItem.isRoot;
     getOption("map").disabled = !currentItem.isRoot;
   }
-  function onChange2() {
+  function syncLogoWithSelect(){
+    if(select2.value==""){
+      document.getElementById(current_logo).style.display = "none"
+      current_logo = "dyn_logo_inherit"
+      document.getElementById(current_logo).style.display = "block"
+    }
+    else if(select2.value.startsWith("map")){
+      document.getElementById(current_logo).style.display = "none"
+      current_logo = "dyn_logo_map"
+      document.getElementById(current_logo).style.display = "block"
+    }
+    else if(select2.value.startsWith("graph")){
+      document.getElementById(current_logo).style.display = "none"
+      current_logo = "dyn_logo_graph"
+      document.getElementById(current_logo).style.display = "block"
+    }
+    else if(select2.value.startsWith("tree")){
+      document.getElementById(current_logo).style.display = "none"
+      current_logo = "dyn_logo_tree"
+      document.getElementById(current_logo).style.display = "block"
+    }
+    else{
+      document.getElementById(current_logo).style.display = "none"
+      current_logo = "dyn_logo_default"
+      document.getElementById(current_logo).style.display = "block"
+    }
+  }
+  function onChange2(){
+    syncLogoWithSelect();
     let layout = repo2.get(select2.value);
     var action2 = new SetLayout(currentItem, layout);
     action(action2);
@@ -2724,6 +2755,7 @@ ${text}`);
     close3();
   }
   function open(point) {
+    return;
     node9.hidden = false;
     let w = node9.offsetWidth;
     let h = node9.offsetHeight;
@@ -3634,7 +3666,6 @@ ${text}`);
       switch (e.type) {
         case "input":
           //sandipan
-          console.log("inputting..")
           this.update();
           this.map.ensureItemVisibility(this);
           break;
@@ -3645,7 +3676,6 @@ ${text}`);
           break;
         case "blur":
           //sandipan patches
-          console.log("blurring")
           if (olive_100_2.style.display == "flex"){
             break;
           } 
@@ -4606,6 +4636,7 @@ ${text}`);
   var olive_100_2 = document.querySelector("#mod-top-overlay-2");
   var supremeParent;
   //spacing and radius
+  var current_logo = "dyn_logo_map"
   // mod-relocate
   document.querySelector("#mod_relocate").onclick = ()=>{
     //currentMap.moveTo(0,0);
@@ -4619,7 +4650,6 @@ ${text}`);
 
   //undo redo for touch surfaces
   olive_100_1.querySelector("#touch_undo").onclick = ()=>{
-    console.log("hi")
     back();
   }
 
@@ -4654,6 +4684,7 @@ ${text}`);
     currentMap && currentMap.hide();
     reset();
     currentMap = map;
+    CURRENT_MAP = currentMap;
     currentMap.show(port3);
   }
   function action(action2) {
@@ -4670,6 +4701,17 @@ ${text}`);
     }
     //TODO sandipan edit
     currentItem = item;
+    //lcn
+    try{
+      select2.value = item.layout.id;
+      syncLogoWithSelect()
+    }
+    catch(error){
+      select2.value = ""
+      syncLogoWithSelect()
+    }
+
+    CURRENT_ITEM = currentItem;
     currentItem.dom.node.querySelector('div.content').style.backgroundColor = "lightblue";
     currentItem.select();
     currentMap.ensureItemVisibility(currentItem);
@@ -4700,6 +4742,7 @@ ${text}`);
     });
     //sanhere
     port = port3;
+    MAIN_PORT = port;
     init6();
     init17();
     init15();
