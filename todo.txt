@@ -1,15 +1,22 @@
 2. Increase distance between items
+* Add option to choose spacing between elements
+* Connector text
+* Arrow connector option
 3. Increase Stroke width
 5. Export Format 
-7. remove pell editor: D
+7. remove trix editor: D
 
 ** Major change to the internals: Trix Editor as a direct child of the svg node!!:Done
 
-13. Make it faster and more efficient
-14. Bring in view
-15. Image Support 
+13. Make it faster and more efficient:
+14. Bring in view: Done
+15. Image Support Done
 16. UI Fixes
 17. Testing (update6: remember?)
 
 ** Pell integration instead of trix. Huge Customization.
+18. Scroll Implementation: Done
+19. Image Editing Criteria
+20. Give more space for laptop screen
+21. tag manager
 

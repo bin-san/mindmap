@@ -99,19 +99,21 @@
     margin-top: -2vmin;
 }
 
-
-#mod-top-more{
+.mod-more-button{
     font-size: 200%;
     background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
         radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
     color: transparent;
     -webkit-background-clip: text;
     padding-right: 2.5vmin;
+
 }
 
-#mod-top-more:hover{
+.mod-more-button:hover{
     cursor: pointer;
 }
+
+
 
 #mod-top-options {
     display: flex;
@@ -180,5 +182,25 @@
     width: fit-content;
     height: fit-content;
     display: block;
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 100%;
+}
+button.text_button {
+    padding: 10px;
+    flex-grow: 1;
+    font-size: 100%;
+}
+
+textarea{
+    padding: 10px;
+    font-size: 100%;
+    resize: none;
+}
+
+dialog {
+    width: max(400px, 100vmin);
 }
 

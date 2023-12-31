@@ -12,10 +12,91 @@
 	<base target="_blank" />
 	<link rel="stylesheet" href="mod.css">
 	<link rel="stylesheet" type="text/css" href="./pell/dist/pell.css">
+	<script src="./save.js"></script>
 
 </head>
 
 <body style="user-select: none;">
+	<dialog id="details_d" style="width: 100vmin;">
+		<div style="display: flex;flex-direction: column;row-gap: 10px;">
+			<div style="font-weight: bold;font-size: large;border-bottom: 2px solid;padding-bottom: 10px;">MindMap Details</div><br>
+			<input type="text" id="details_title" placeholder="Title">
+			<textarea id="details_description" placeholder="Description" rows="4"></textarea>
+			<input type="text" id="details_author" placeholder="Author Name">
+			<input type="text" id="details_authormail" placeholder="Author Email">
+			<input type="text" id="details_tags" placeholder="Tags" style="display: none;">
+			<div style="display: flex;column-gap: 10px;">
+				<script>
+					function details_d_f1(event){
+						TITLE = document.querySelector("#details_title").value
+						DESCRIPTION = document.querySelector("#details_description").value
+						AUTHOR = document.querySelector("#details_author").value
+						AUTHOR_MAIL = document.querySelector("#details_authormail").value
+						document.querySelector('#details_d').open = false
+					}
+				</script>
+				<button class="text_button" onclick="details_d_f1(event)">Ok</button>
+				<button class="text_button" onclick="console.log('hi');document.querySelector('#details_d').open=false;">Close</button>
+			</div>
+		</div>
+	</dialog>
+	<dialog id="filename_d" style="width: min(100vmin, 400px);">
+		<div style="display: flex;flex-direction: column;row-gap: 10px;">
+			<input type="text" placeholder="Enter file name" autofocus>
+			<div style="display: flex;column-gap: 10px;">
+				<script>
+					function save_me(event){
+						let filename = event.target.parentElement.previousElementSibling.value;
+						if(filename) saveToFile(filename);
+						document.querySelector('#filename_d').open = false;
+					}
+				</script>
+				<button class="text_button" onclick="save_me(event)">Save</button>
+				<button class="text_button" onclick="document.querySelector('#filename_d').open=false">Close</button>
+			</div>
+		</div>
+	</dialog>
+	<dialog id="d1" style="width: 100vmin;">
+		<script>
+			updateLabelFromRangeInputSan = (event)=>{
+				let v = event.target.value;
+				event.target.nextElementSibling.innerHTML = v.toString();
+			}
+		</script>
+		<b>Map & Graph</b>
+		<hr><br>
+		<div style="display: flex;column-gap: 20px;">
+			<label>Spacing</label>
+			<input id="d1_m_g_s" type="range" min="4" max="64" value="64" style="flex-grow: 1;" oninput="updateLabelFromRangeInputSan(event)">
+			<label>64</label>
+		</div><br>
+		<div style="display: flex;column-gap: 20px;">
+			<label>Radius</label>
+			<input id="d1_m_g_r" type="range" min="2" max="32" value="8" style="flex-grow: 1;" oninput="updateLabelFromRangeInputSan(event)">
+			<label>8</label>
+		</div><br><br>
+		<b>Tree</b>
+		<hr><br>
+		<div style="display: flex;column-gap: 20px;">
+			<label>Spacing</label>
+			<input type="range" min="1" max="100" value="50" style="flex-grow: 1;" oninput="updateLabelFromRangeInputSan(event)">
+			<label>50</label>
+		</div><br>
+		<div style="display: flex;column-gap: 20px;">
+			<label>Radius</label>
+			<input type="range" min="1" max="100" value="50" style="flex-grow: 1;" oninput="updateLabelFromRangeInputSan(event)">
+			<label>50</label>
+		</div><br><hr><br>
+		<div style="display: flex;column-gap: 20px;">
+			<label><b>Child Spacing</b></label>
+			<input type="range" min="1" max="100" value="50" style="flex-grow: 1;" oninput="updateLabelFromRangeInputSan(event)">
+			<label>50</label>
+		</div><br><hr>
+		<div style="display: flex;">
+			<button style="flex-grow: 1;padding: 10px 0px;font-size: 100%;">Default</button>
+			<button style="flex-grow: 1;padding: 10px 0px;font-size: 100%;" onclick="event.target.parentElement.parentElement.open=false">Close</button>
+		</div>
+	</dialog>
 	<div id="pell-editor" class="pell">
 		<dialog class="link-dialog">
 			<input type="text" placeholder="Enter a link..." style="outline: none;padding: 5px;">
@@ -30,13 +111,19 @@
 				<span id="mod-app-name" class="golden-gradient-text">MindMap</span>
 				<span id="mod-app-developer">binsan</span>
 			</div>
-			<span class="material-symbols-outlined mod-more-button" id="mod-top-more">
-				more_vert
-			</span>
+			<div style="display: flex;width: fit-content;">
+				<span class="material-symbols-outlined mod-more-button" onclick="document.querySelector('#d1').open='true'" style="display: none;">
+					format_letter_spacing
+				</span>
+				<span class="material-symbols-outlined mod-more-button" id="mod-top-more">
+					more_vert
+				</span>
+			</div>
 			<div id="mod-top-options" style="display: none;">
-				<span id="mod-op-save">Save</span>
+				<span id="mod-op-save" onclick="event.target.parentElement.style.display='none';let x = document.querySelector('#filename_d');x.open=true;x.querySelector('input').focus();">Save</span>
 				<span id="mod-op-import">Import</span>
 				<span id="mod-op-publish">Publish</span>
+				<span id="mod-op-describe" onclick="document.querySelector('#details_d').open = true;">Describe</span>
 			</div>
 		</div>
 		<div id="mod-top-overlay-1" class="vert-center" style="display: flex;background-color:whitesmoke;">
@@ -83,44 +170,9 @@
 			</div>
 		</div>
 		<div id="mod-top-overlay-2" class="vert-center" style="display: none;background-color:whitesmoke;">
-			<!--
-				<div id="mod-top-action-edit">
-				<style>
-					.xx1-icon {
-						font-size: 200%;
-						padding: 10px 10px;
-						color: rgb(2, 1, 44);
-						background-color: white;
-					}
-				</style>
-				<span class="material-symbols-outlined xx1-icon xx-but" id="san-e1-bold" value="false">
-					format_bold
-				</span>
-				<span class="material-symbols-outlined xx1-icon xx-but" id="san-e1-italic" value="false">
-					format_italic
-				</span>
-				<span class="material-symbols-outlined xx1-icon xx-but" id="san-e1-underline" value="false">
-					format_underlined
-				</span>
-				<span class="material-symbols-outlined xx1-icon xx-but" id="san-e1-strike" value="false">
-					format_strikethrough
-				</span>
-				<span class="material-symbols-outlined xx1-icon xx-but" id="san-e1-link">
-					add_link
-				</span>
-				<span class="material-symbols-outlined xx1-icon xx-but" id="san-e1-image">
-					image
-				</span>
-				<span class="material-symbols-outlined xx1-icon xx-but" style="background-color: red;display:none"
-					id="tcb-mod-117c">
-					close
-				</span>
-			</div>
-			-->
 		</div>
 	</div>
 	<main>
-		<div id="tip"></div>
 	</main>
 
 	<!--

@@ -1,0 +1,10 @@
+var MINDMAPID;
+var TITLE;
+var DESCRIPTION
+var AUTHOR;
+var AUTHOR_MAIL;
+var FILE_NAME;
+var CREATED_AT;
+var UPDATED_AT;
+var TAGS;
+var DATA;

@@ -583,7 +583,7 @@
       this.id = id;
       this.label = label;
       this.childDirection = childDirection;
-      this.SPACING_CHILD = 4;
+      this.SPACING_CHILD = 32;
       repo2.set(this.id, this);
     }
     get option() {
@@ -668,8 +668,8 @@
   var repo2 = new Map();
 
   // .js/layout/graph.js
-  var SPACING_RANK = 16;
-  var R = SPACING_RANK / 2;
+  var SPACING_RANK = 64;//4-128
+  var R = 16;//2-32
   var GraphLayout = class extends Layout {
     update(item) {
       let totalHeight = this.layoutItem(item, this.childDirection);
@@ -843,8 +843,8 @@
   new GraphLayout("graph-right", "Right", "right");
 
   // .js/layout/tree.js
-  var SPACING_RANK2 = 32;
-  var R2 = SPACING_RANK2 / 4;
+  var SPACING_RANK2 = 64;
+  var R2 = 16;
   var LINE_OFFSET = SPACING_RANK2 / 2;
   var TreeLayout = class extends Layout {
     update(item) {
@@ -4027,7 +4027,7 @@ ${text}`);
     }
   }
   function init15() {
-    window.addEventListener("keydown", handleEvent2);
+    window.addEventListener("keydown", handleEvent2);//this possess the input first that I dont want
   }
   function keyOK(key, e) {
     return Object.entries(key).every(([key2, value]) => e[key2] == value);
@@ -4064,12 +4064,8 @@ ${text}`);
       }
     });
     port2.addEventListener("wheel", (e) => {
-      const { deltaY } = e;
-      if (!deltaY) {
-        return;
-      }
-      let dir = deltaY > 0 ? -1 : 1;
-      currentMap.adjustFontSize(dir);
+      currentMap.moveBy([0, (e.deltaY)>0?-4:4]);
+     //Implement code scroll behaviour
     });
     port2.addEventListener("contextmenu", (e) => {
       onDragEnd(e);
@@ -4609,7 +4605,7 @@ ${text}`);
   var olive_100_1 = document.querySelector("#mod-top-overlay-1");
   var olive_100_2 = document.querySelector("#mod-top-overlay-2");
   var supremeParent;
-
+  //spacing and radius
   // mod-relocate
   document.querySelector("#mod_relocate").onclick = ()=>{
     //currentMap.moveTo(0,0);
@@ -4639,7 +4635,7 @@ ${text}`);
   }
 
   function isActive2(){
-    return false
+    return document.activeElement.tagName == "INPUT" || document.activeElement.tagName == "TEXTAREA"
   }
 
   trix_editor.oninput = ()=>{
@@ -4703,6 +4699,7 @@ ${text}`);
       return "";
     });
     //sanhere
+    port = port3;
     init6();
     init17();
     init15();

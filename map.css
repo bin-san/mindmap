@@ -1,5 +1,5 @@
-* {
-  font-family: source sans pro, sans-serif;
+svg img{
+  max-width: 350px;
 }
 svg > .item > foreignObject > .content {
   border-width: 2px;
