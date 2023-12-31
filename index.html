@@ -17,6 +17,46 @@
 </head>
 
 <body style="user-select: none;">
+	<dialog id="export_as_d" open>
+		<div style="display: flex;flex-direction: column;row-gap: 20px;">
+			<input type="text" placeholder="Enter File Name">
+			<div style="display: flex;column-gap: 20px;">
+				<div style="display: flex;flex-grow: 1;justify-content: center;">
+					<input type="radio" name="format" value="png" checked>
+					<label for="format">png</label>
+				</div>
+				<div style="display: flex;flex-grow: 1;justify-content: center;">
+					<input type="radio" name="format" value="svg">
+					<label for="format">svg</label>
+				</div>
+			</div>
+			<div style="display: flex;column-gap: 20px;">
+				<script>
+					function d02okb(event){
+						let x = document.querySelector('#export_as_d');
+						let _f = x.querySelector("input").value;
+						if (!_f ) _f="download";
+						let format = x.querySelector("input[name='format']:checked").value
+						filename = _f + "." + format
+						IMAGE_BACKEND.save(format).then((url)=>{
+							let a = document.createElement("a")
+							a.href = url
+							a.download = filename
+							a.click()
+						})
+						x.open = false
+					}
+				</script>
+				<button class="text_button" onclick="d02okb()">Ok</button>
+				<script>
+					function d01cb(event){
+						document.querySelector('#export_as_d').open = false;
+					}
+				</script>
+				<button class="text_button" onclick="d01cb()">Close</button>
+			</div>
+		</div>
+	</dialog>
 	<dialog id="details_d" style="width: min(100vmin, 400px);">
 		<div style="display: flex;flex-direction: column;row-gap: 20px;">
 			<div style="font-weight: bold;font-size: large;border-bottom: 2px solid;padding-bottom: 10px;">MindMap Details</div>
@@ -126,7 +166,16 @@
 
 				<input type="file" style="display: none;" accept=".mindmap" id="file_importer_1" onchange="importFromFile()">
 
-				<span id="mod-op-publish">Publish</span>
+				<script>
+					function mod_op_export_f(){
+						let x = document.querySelector("#export_as_d");
+						x.open = true;
+						x.querySelector("input").focus()
+
+					}
+				</script>
+				<span id="mod-op-export" onclick="mod_op_export_f()">Export</span>
+
 				<script>
 					function describe_field_update(){
 						document.querySelector("#details_title").value = TITLE;
@@ -138,6 +187,7 @@
 					}
 				</script>
 				<span id="mod-op-describe" onclick="document.querySelector('#details_d').open = true;describe_field_update();">Describe</span>
+				
 			</div>
 		</div>
 		<div id="mod-top-overlay-1" class="vert-center" style="display: flex;background-color:whitesmoke;">

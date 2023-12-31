@@ -217,6 +217,7 @@ textarea{
 
 
 dialog {
-    width: max(400px, 100vmin);
+    width: min(400px, 100vmin);
 }
+
 

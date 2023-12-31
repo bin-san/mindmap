@@ -1,6 +1,7 @@
 var CURRENT_MAP;
 var CURRENT_ITEM;
 var MAIN_PORT;
+var IMAGE_BACKEND;
 (() => {
   var __defProp = Object.defineProperty;
   var __markAsModule = (target) => __defProp(target, "__esModule", { value: true });
@@ -1400,7 +1401,7 @@ var MAIN_PORT;
     select7.append(...options);
   }*/
 
-  /*/ .js/backend/backend.js
+  // .js/backend/backend.js
   var Backend = class {
     constructor(id) {
       this.id = id;
@@ -1409,7 +1410,7 @@ var MAIN_PORT;
     reset() {
     }
   };
-  var repo5 = new Map();*/
+  var repo5 = new Map();
 
   /*/ .js/backend/local.js
   var Local = class extends Backend {
@@ -2058,7 +2059,7 @@ ${text}`);
     }
   };*/
 
-  /*/ .js/backend/image.js
+  // .js/backend/image.js
   var ImageBackend = class extends Backend {
     constructor() {
       super("image");
@@ -2099,7 +2100,7 @@ ${text}`);
     return new Promise((resolve) => {
       img.onload = () => resolve(img);
     });
-  }*/
+  }
 
   /*/ .js/ui/backend/image.js
   var ImageUI = class extends BackendUI {
@@ -4634,6 +4635,7 @@ ${text}`);
   var currentItem;
   var olive_100_1 = document.querySelector("#mod-top-overlay-1");
   var olive_100_2 = document.querySelector("#mod-top-overlay-2");
+  IMAGE_BACKEND = new ImageBackend();
   var supremeParent;
   //spacing and radius
   var current_logo = "dyn_logo_map"
